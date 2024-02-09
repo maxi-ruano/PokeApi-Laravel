@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-
 class PokemonController extends Controller
 {
 
-public function index()
+    public function index()
     {
         $cachedData = Cache::get('pokemon_data');
     
@@ -60,7 +58,7 @@ public function index()
         );
         $searchResults = !empty(request('name')) ? $paginatedResults->items() : null;
 
-        return view('pokemons.index', compact('paginatedResults','searchResults'));
+        return view('pokemons.index', compact('paginatedResults', 'searchResults'));
     }
 
 
